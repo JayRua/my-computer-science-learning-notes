@@ -1,6 +1,7 @@
 # CSS Flexbox Guide (Internet Applications)
 ## 1. What is Flexbox?
 Flexbox (Flexible Box Layout) is a CSS layout system used to arrange elements in a row or column. It is especially useful for creating responsive layouts and aligning items easily.
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 ## 2. Flex Container vs Flex Items
 To use Flexbox, you define a container and its child elements become flex items.
 Example:
