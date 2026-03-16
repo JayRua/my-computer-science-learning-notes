@@ -101,7 +101,7 @@ for(int i = 0; i < accounts.size(); i++)
     }
 }
 ```
-Week 2 – JavaFX Introduction
+## Week 2 - JavaFX Introduction
 JavaFX is Java's modern graphical interface framework for building desktop applications.
 Basic GUI structure:
 Stage → Scene → Layout → Controls
@@ -112,11 +112,12 @@ Container that holds graphical content.
 Layouts:
 Determine how controls are arranged.
 Common layouts:
-VBox – vertical layout
-HBox – horizontal layout
-GridPane – grid layout
-BorderPane – five region layout
-Example JavaFX application:
+- VBox – vertical layout  
+- HBox – horizontal layout  
+- GridPane – grid layout  
+- BorderPane – five region layout  
+### Example JavaFX application:
+```
 public class FirstGUI extends Application
 {
     public void start(Stage stage)
@@ -133,19 +134,21 @@ public class FirstGUI extends Application
         launch(args);
     }
 }
-Week 3 – JavaFX Event Handling
+```
+## Week 3 – JavaFX Event Handling
 In GUI applications user interactions generate events.
 Examples:
-- clicking a button
-- typing text
-- mouse movement
+- clicking a button  
+- typing text  
+- mouse movement  
 Common event types:
-MouseEvent
-KeyEvent
-ActionEvent
-WindowEvent
+MouseEvent  
+KeyEvent  
+ActionEvent  
+WindowEvent  
 Event handling defines what happens when an event occurs.
-Example event handler:
+### Example event handler:
+```
 EventHandler<ActionEvent> handler =
     new EventHandler<ActionEvent>()
 {
@@ -154,11 +157,15 @@ EventHandler<ActionEvent> handler =
         lblOutput.setText("Hello " + txtName.getText());
     }
 };
-Attach to button:
+//Attach to button:
 btnName.setOnAction(handler);
-Lambda expression (modern approach):
+```
+### Lambda expression (modern approach):
+```
 btnName.setOnAction(e -> lblOutput.setText("Hello " + txtName.getText()));
+```
 Example multi‑line lambda:
+```
 btnAdd.setOnAction(e ->
 {
     int num1 = Integer.parseInt(txtNum1.getText());
@@ -166,3 +173,4 @@ btnAdd.setOnAction(e ->
     int result = num1 + num2;
     lblResult.setText(num1 + " + " + num2 + " = " + result);
 });
+```
