@@ -165,59 +165,6 @@ public class FirstGUI extends Application
     }
 }
 ```
-## Week 3 – JavaFX Event Handling
-In GUI applications user interactions generate events.
-Examples:
-- clicking a button  
-- typing text  
-- mouse movement  
-Common event types:
-MouseEvent  
-KeyEvent  
-ActionEvent  
-WindowEvent  
-Event handling defines what happens when an event occurs.
-### Parsing Input From TextFields
-
-Values entered into a TextField are always read as a String.
-
-To use them as numbers they must be converted (parsed).
-
-Convert to integer:
-```
-int num = Integer.parseInt(txtNum.getText());
-```
-Convert to double:
-```
-double value = Double.parseDouble(txtValue.getText());
-```
-### Example event handler:
-```
-EventHandler<ActionEvent> handler =
-    new EventHandler<ActionEvent>()
-{
-    public void handle(ActionEvent e)
-    {
-        lblOutput.setText("Hello " + txtName.getText());
-    }
-};
-//Attach to button:
-btnName.setOnAction(handler);
-```
-### Lambda expression (modern approach):
-```
-btnName.setOnAction(e -> lblOutput.setText("Hello " + txtName.getText()));
-```
-Example multi‑line lambda:
-```
-btnAdd.setOnAction(e ->
-{
-    int num1 = Integer.parseInt(txtNum1.getText());
-    int num2 = Integer.parseInt(txtNum2.getText());
-    int result = num1 + num2;
-    lblResult.setText(num1 + " + " + num2 + " = " + result);
-});
-```
 ### Common JavaFX imports:
 ```
 import javafx.application.Application;
@@ -281,3 +228,57 @@ public class MyGUI extends Application
     }
 }
 ```
+## Week 3 – JavaFX Event Handling
+In GUI applications user interactions generate events.
+Examples:
+- clicking a button  
+- typing text  
+- mouse movement  
+Common event types:
+MouseEvent  
+KeyEvent  
+ActionEvent  
+WindowEvent  
+Event handling defines what happens when an event occurs.
+### Parsing Input From TextFields
+
+Values entered into a TextField are always read as a String.
+
+To use them as numbers they must be converted (parsed).
+
+Convert to integer:
+```
+int num = Integer.parseInt(txtNum.getText());
+```
+Convert to double:
+```
+double value = Double.parseDouble(txtValue.getText());
+```
+### Example event handler:
+```
+EventHandler<ActionEvent> handler =
+    new EventHandler<ActionEvent>()
+{
+    public void handle(ActionEvent e)
+    {
+        lblOutput.setText("Hello " + txtName.getText());
+    }
+};
+//Attach to button:
+btnName.setOnAction(handler);
+```
+### Lambda expression (modern approach):
+```
+btnName.setOnAction(e -> lblOutput.setText("Hello " + txtName.getText()));
+```
+Example multi‑line lambda:
+```
+btnAdd.setOnAction(e ->
+{
+    int num1 = Integer.parseInt(txtNum1.getText());
+    int num2 = Integer.parseInt(txtNum2.getText());
+    int result = num1 + num2;
+    lblResult.setText(num1 + " + " + num2 + " = " + result);
+});
+```
+
