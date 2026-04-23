@@ -287,19 +287,78 @@ If multiple buttons use the same handler, use `getSource()` to identify which bu
   if (e.getSource() == btnAdd) {
       // Add logic
 ```
+Example: 
+```
+// Define one handler for multiple buttons
+EventHandler<ActionEvent> calcHandler = e ->
+{
+	if (e.getSource() == btnAdd)
+	{
+		lblResult.setText("Adding...");
+	} else if (e.getSource() == btnSubtract)
+	{
+		lblResult.setText("Subtracting...");
+	}
+};
+   
+// Assign the same handler to different buttons
+btnAdd.setOnAction(calcHandler);
+btnSubtract.setOnAction(calcHandler);
+```
 
 ### Input Validation
 Before parsing numbers, always check if the `TextField` is empty to prevent crashes.
 ```
-  if (txtPrice.getText().isEmpty()) {
+  if (txtPrice.getText().isEmpty())
+	{
       lblStatus.setText("Error: Please enter a price.");
-  }
+    }
 
   // Better version that catches spaces only
-  if (txtPrice.getText().trim().isEmpty()) {
+  if (txtPrice.getText().trim().isEmpty())
+	{
       // ...
-  }
+    }
 ```
+Example: 
+```
+// Comprehensive check for empty or whitespace-only input
+   if (txtPrice.getText().trim().isEmpty())
+	{
+   		txtArea.setText("Error: You must enter a price.");
+    } else
+	{
+   // Safe to attempt parsing once we know it's not empty
+	double price = Double.parseDouble(txtPrice.getText());
+    }
+```
+Example Try-Catch-Finally Block:
+```
+try
+{
+    // Risky code: might fail if text is "abc" or 0
+    int input = Integer.parseInt(txtField.getText());
+    int result = 100 / input;
+    lblStatus.setText("Result is: " + result);
+} 
+catch (NumberFormatException e)
+{
+    // Runs if the user types letters instead of numbers
+    lblStatus.setText("Error: Input must be a number.");
+} 
+catch (ArithmeticException e)
+{
+	// Runs if the user types 0
+	lblStatus.setText("Error: Cannot divide by zero.");
+} 
+finally
+{
+	// This runs no matter what (even if an error happened)
+	txtField.clear(); 
+}
+
+```
+
 ## Week 5 – Exception Handling
 Exceptions are runtime errors that disrupt the normal flow of a program.
 
@@ -325,7 +384,23 @@ Exceptions are runtime errors that disrupt the normal flow of a program.
 - `NumberFormatException`: Thrown when `Integer.parseInt()` receives a non-numeric String.
 - `ArithmeticException`: Thrown when dividing by zero.
 - `NullPointerException`: Thrown when trying to use an object that hasn't been initialized.
-- 'ArrayIndexOutOfBoundsException':
-- 'InputMismatchExceptin':
+- `ArrayIndexOutOfBoundsException`: Thrown when trying to access an index that doesn't exist (e.g.,
+     index 10 in an array of size 5).
+- `InputMismatchException`: Thrown by the Scanner class when the data provided by the user is the wrong
+     type (e.g., entering a word when nextInt() was expected).
+Example block handling ArrayList Exceptions:
+```
+try
+{
+   // Accessing an element from your properties list
+   Property p = properties.get(index);
+   txtArea.setText(p.toString());
+}
+catch (IndexOutOfBoundsException e)
+{
+   // Prevents crash if the property number doesn't exist in the list
+   txtArea.setText("Error: That property index does not exist.");
+}
 
+```
 
