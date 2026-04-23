@@ -228,7 +228,7 @@ public class MyGUI extends Application
     }
 }
 ```
-## Week 3 – JavaFX Event Handling
+## Week 3 and 4 – JavaFX Event Handling
 In GUI applications user interactions generate events.
 Examples:
 - clicking a button  
@@ -281,4 +281,51 @@ btnAdd.setOnAction(e ->
     lblResult.setText(num1 + " + " + num2 + " = " + result);
 });
 ```
+### Shared Event Handlers (getSource)
+If multiple buttons use the same handler, use `getSource()` to identify which button was clicked.
+```
+  if (e.getSource() == btnAdd) {
+      // Add logic
+```
+
+### Input Validation
+Before parsing numbers, always check if the `TextField` is empty to prevent crashes.
+```
+  if (txtPrice.getText().isEmpty()) {
+      lblStatus.setText("Error: Please enter a price.");
+  }
+
+  // Better version that catches spaces only
+  if (txtPrice.getText().trim().isEmpty()) {
+      // ...
+  }
+```
+## Week 5 – Exception Handling
+Exceptions are runtime errors that disrupt the normal flow of a program.
+
+### The Throwable Hierarchy
+- **Throwable**: The parent class of all errors.
+- **Error**: Serious system problems (e.g., `OutOfMemoryError`). Do not catch.
+- **Exception**: Problems your code can handle.
+   - **RuntimeException (Unchecked)**: Logic errors like `ArithmeticException` or
+      `NullPointerException`.
+   - **Checked Exceptions**: Detected at **compilation**. You are forced to handle these (e.g.,
+      `IOException`).
+  
+### Keywords
+| Keyword | Purpose |
+| :--- | :--- |
+| `try` | Defines a block of code to be tested for errors. |
+| `catch` | Handles the exceptions. It defines a block of code to execute if an error occurs. |
+| `finally` | A block that **always** executes, regardless of an exception. Used for cleanup. |
+| `throw` | Used to manually trigger an exception (e.g., `throw new Exception();`). |
+| `throws` | Declared in a method header to warn that the method might fail. |
+
+### Common Exceptions in GUI
+- `NumberFormatException`: Thrown when `Integer.parseInt()` receives a non-numeric String.
+- `ArithmeticException`: Thrown when dividing by zero.
+- `NullPointerException`: Thrown when trying to use an object that hasn't been initialized.
+- 'ArrayIndexOutOfBoundsException':
+- 'InputMismatchExceptin':
+
 
